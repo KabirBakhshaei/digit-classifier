@@ -9,11 +9,11 @@
 A real-time handwritten digit classifier built with **PyTorch** and **Gradio**. 
 Draw any digit (0–9) on the canvas and the model predicts it instantly with 
 confidence scores for all 10 classes. 
-> 🎓 **Course Project** — *Neural Networks & Deep Learning Theoretical Foundations*
+> 🎓 **Course Project**: *Neural Networks & Deep Learning Theoretical Foundations*
 > 
 > University of Pisa & Sant'Anna School of Advanced Studies, Pisa, Italy
 
-> 👨‍🔬 **Author:** Kabir Bakhshaei — Ph.D. Student in Artificial Intelligence
+> 👨‍🔬 **Author:** Kabir Bakhshaei: Ph.D. Student in Artificial Intelligence
 
 ---
 
