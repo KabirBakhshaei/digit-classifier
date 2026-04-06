@@ -1,0 +1,51 @@
+{
+    "epochs_trained": 50,
+    "best_val_loss": 0.06260576731515453,
+    "best_val_acc": 98.4,
+    "final_train_loss": 0.08034717464119955,
+    "final_train_acc": 97.5925925925926,
+    "model_parameters": 535818,
+    "config": {
+        "model": {
+            "input_size": 784,
+            "hidden1": 512,
+            "hidden2": 256,
+            "output_size": 10,
+            "dropout": 0.3,
+            "weight_init": "xavier"
+        },
+        "training": {
+            "batch_size": 64,
+            "learning_rate": 0.001,
+            "epochs": 50,
+            "val_split": 0.1,
+            "optimizer": "adam",
+            "loss": "cross_entropy",
+            "scheduler": {
+                "type": "reduce_on_plateau",
+                "patience": 3,
+                "factor": 0.5,
+                "min_lr": 1e-05
+            },
+            "early_stopping": {
+                "enabled": true,
+                "patience": 7,
+                "min_delta": 0.0001,
+                "monitor": "val_loss"
+            },
+            "augmentation": {
+                "random_rotation": 10,
+                "random_translate": 0.1
+            }
+        },
+        "paths": {
+            "data_dir": "./data",
+            "model_path": "./model.pth",
+            "results_dir": "./results",
+            "assets_dir": "./assets"
+        },
+        "evaluation": {
+            "confidence_threshold": 0.6
+        }
+    }
+}

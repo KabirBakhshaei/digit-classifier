@@ -1,0 +1,19 @@
+# ─────────────────────────────────────────────────────────────
+# Digit Classifier — Python dependencies
+#
+# Environment: pinns_cuda conda env
+#   Location : E:\Software\CondaEnv\pinns_cuda
+#   Activate : conda activate E:\Software\CondaEnv\pinns_cuda
+# ─────────────────────────────────────────────────────────────
+
+# ── All packages present in pinns_cuda (exact versions) ─────
+torch==2.5.1
+torchvision==0.20.1
+numpy==2.0.1
+matplotlib==3.10.8
+Pillow==11.1.0
+pyyaml==6.0.3
+gradio==6.10.0
+seaborn==0.13.2
+scikit-learn==1.7.2
+

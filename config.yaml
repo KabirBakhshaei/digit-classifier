@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────────────────────
+# config.yaml — Central configuration for Digit Classifier
+# All hyperparameters, paths, and training settings live here.
+# Edit this file to change any setting without touching the code.
+# ─────────────────────────────────────────────────────────────
+
+model:
+  input_size: 784          # 28x28 flattened
+  hidden1: 512             # neurons in first hidden layer
+  hidden2: 256             # neurons in second hidden layer
+  output_size: 10          # one per digit class (0-9)
+  dropout: 0.3             # dropout probability for both hidden layers
+  weight_init: xavier      # weight initialisation: xavier or default
+
+training:
+  batch_size: 64           # samples per mini-batch
+  learning_rate: 0.001     # initial learning rate for Adam
+  epochs: 50               # maximum number of training epochs
+  val_split: 0.1           # fraction of training data used for validation
+  optimizer: adam          # optimiser (adam only for now)
+  loss: cross_entropy      # loss function
+
+  # Learning rate scheduler
+  scheduler:
+    type: reduce_on_plateau
+    patience: 3            # epochs to wait before reducing LR
+    factor: 0.5            # multiply LR by this factor
+    min_lr: 0.00001        # minimum allowed learning rate
+
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 7            # stop after this many epochs with no improvement
+    min_delta: 0.0001      # minimum improvement to count as progress
+    monitor: val_loss      # metric to monitor: val_loss or val_acc
+
+  # Data augmentation (training only)
+  augmentation:
+    random_rotation: 10    # degrees
+    random_translate: 0.1  # fraction of image size
+
+paths:
+  data_dir: ./data
+  model_path: ./model.pth
+  results_dir: ./results   # JSON results, CSV logs, plots saved here
+  assets_dir: ./assets     # confusion matrix and other figures
+
+evaluation:
+  confidence_threshold: 0.6  # below this, show "low confidence" warning in app
