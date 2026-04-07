@@ -32,17 +32,25 @@ model  = load_model(model, MODEL_PATH, device)
 
 def predict_digit(image):
     if image is None:
-        return {str(i): 0.0 for i in range(10)}
+        return {}
+
     img_array = image["composite"]
     tensor = preprocess_canvas_image(img_array)
     if tensor is None:
-        return {str(i): 0.0 for i in range(10)}
+        return {}
+
     tensor = tensor.to(device)
     model.eval()
     with torch.no_grad():
         output        = model(tensor)
         probabilities = torch.nn.functional.softmax(output, dim=1)
+
     probs = probabilities.squeeze().cpu().numpy()
+
+    # Low confidence check — if max probability < 0.6 show warning
+    if float(np.max(probs)) < 0.6:
+        return {"Low confidence — please redraw": 1.0}
+
     return {str(i): float(probs[i]) for i in range(10)}
 
 
